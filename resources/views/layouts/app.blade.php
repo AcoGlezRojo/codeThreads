@@ -95,22 +95,7 @@
         </div>
     </footer>
 
-    <script>
-        // Burger menus
-        document.addEventListener('DOMContentLoaded', function() {
-            // open
-            let burger = document.getElementById('navbar-burger');
-            let menu = document.getElementById('navbar-menu');
-
-            menu.classList.toggle('hidden');
-
-            burger.addEventListener('click', function() {
-                menu.classList.toggle('hidden');
-            });
-
-
-        });
-    </script>
+    @vite('resources/js/app.js')
 </body>
 
 </html>
