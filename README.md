@@ -33,4 +33,11 @@ Laravel es un framework para aplicaciones web con una sintaxis expresiva y elega
 
 ## Flowbite
 
+<p align="center">
+    <a href="https://flowbite.com/" target="_blank" rel="nofollow">
+        <img src="https://camo.githubusercontent.com/46fcf83d0b41814e6a640808d16ed92866674fd38b78bc67fb727ac93e513eae/68747470733a2f2f666c6f77626974652e73332e616d617a6f6e6177732e636f6d2f6769746875622f6c6f676f2d6769746875622e706e67"
+            width="350" alt="Flowbite Logo">
+    </a>
+</p>
+
 Cree sitios web aún más rápido con componentes de Tailwind CSS
