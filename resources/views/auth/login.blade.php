@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-    Crear cuenta
+    Iniciar sesión
 @endsection
 
 @section('body')
@@ -12,50 +12,17 @@
                     <div class="md:w-5/12">
                         <h1
                             class="text-xl font-bold leading-tight tracking-tight text-gray-900 md:text-2xl dark:text-white mb-3">
-                            {{ __('Crea tu cuenta') }}
+                            {{ __('Iniciar sesión') }}
                         </h1>
                         <div>
-                            <img class="rounded-lg w-full" src="{{ asset('assets/img/registrar.jpg') }}" alt="registrarse">
+                            <img class="rounded-lg w-full" src="{{ asset('assets/img/login.jpg') }}" alt="loguearse">
                         </div>
                     </div>
                     <div class="md:w-7/12">
                         <div class="">
-                            <form class="space-y-4 md:space-y-6" action="{{ route('register') }}" method="POST"
+                            <form class="space-y-4 md:space-y-6" action="{{ route('login') }}" method="POST"
                                 autocomplete="off">
                                 @csrf
-                                <!-- name -->
-                                <div>
-                                    <label for="name"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        {{ __('Nombre completo') }}
-                                    </label>
-                                    <input type="text" name="name" id="name"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg 
-                                        focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700
-                                         dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500
-                                          dark:focus:border-blue-500 @error('name') border-red-500 @enderror"
-                                        placeholder="{{ __('Nombre') }}" value={{ old('name') }}>
-                                    @error('name')
-                                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>
-                                <!-- username -->
-                                <div>
-                                    <label for="username"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        {{ __('Usuario') }}
-                                    </label>
-                                    <input type="text" name="username" id="username"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 @error('username') border-red-500 @enderror"
-                                        placeholder="{{ __('Usuario') }}" value={{ old('username') }}>
-                                    @error('username')
-                                        <p class="bg-red-500 text-white my-2 rounded-lg text-sm p-2">
-                                            {{ $message }}
-                                        </p>
-                                    @enderror
-                                </div>
                                 <!-- email -->
                                 <div>
                                     <label for="email"
@@ -103,37 +70,15 @@
                                         </p>
                                     @enderror
                                 </div>
-                                <div>
-                                    <label for="confirm-password"
-                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
-                                        {{ __('Confirmar password') }}
-                                    </label>
-                                    <input type="password" name="password_confirmation" id="confirm-password"
-                                        placeholder="••••••••"
-                                        class="bg-gray-50 border border-gray-300 text-gray-900 sm:text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
-                                </div>
-                                <!-- terms -->
-                                <div class="flex items-start">
-                                    <div class="flex items-center h-5">
-                                        <input id="terms" aria-describedby="terms" type="checkbox" name="terms"
-                                            class="w-4 h-4 border border-gray-300 rounded bg-gray-50 focus:ring-3 focus:ring-primary-300 dark:bg-gray-700 dark:border-gray-600 dark:focus:ring-primary-600 dark:ring-offset-gray-800"
-                                            required>
-                                    </div>
-                                    <div class="ml-3 text-sm">
-                                        <label for="terms"
-                                            class="font-light text-gray-500 dark:text-gray-300">{{ __('Acepto los') }}
-                                            <a class="font-medium text-primary-600 hover:underline text-blue-700 dark:text-primary-500"
-                                                href="#">{{ __('términos y condiciones') }}</a></label>
-                                    </div>
-                                </div>
                                 <button type="submit"
                                     class="w-full text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
-                                    {{ __('Crear cuenta') }}
+                                    {{ __('Iniciar sesión') }}
                                 </button>
                                 <p class="text-sm font-light text-gray-500 dark:text-gray-400 md:text-left text-center">
-                                    {{ __('¿Ya tienes una cuenta?') }}
-                                    <a href="#" class="font-medium text-blue-700 hover:underline dark:text-blue-500">
-                                        {{ __('Inicia sesión') }}
+                                    {{ __('¿No tienes una cuenta?') }}
+                                    <a href="{{ route('register') }}"
+                                        class="font-medium text-blue-700 hover:underline dark:text-blue-500">
+                                        {{ __('Únete a nosotros') }}
                                     </a>
                                 </p>
                             </form>
@@ -143,6 +88,14 @@
             </div>
         </div>
     </section>
+
+    @if (session('alert'))
+        <div id="alert"
+            class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-200 dark:bg-gray-800 dark:text-red-400 w-1/5 absolute right-2 bottom-2 alert"
+            role="alert">
+            {{ session('alert') }}
+        </div>
+    @endif
 @endsection
 
 @section('scripts')
@@ -169,5 +122,13 @@
                 }
             }
         }
+
+        @if (session('alert'))
+            const alert = document.getElementById('alert');
+
+            var hideAlert = setTimeout(function() {
+                alert.classList.add('hidden');
+            }, 5000);
+        @endif
     </script>
 @endsection
