@@ -1,5 +1,7 @@
 @extends('layouts.app')
-
+@section('seo_title')
+    dashboard
+@endsection
 @section('title')
     dashboard
 @endsection
@@ -16,10 +18,10 @@
     <section class="container mt-16 md:mt-32 mx-auto md:flex justify-center">
         <div class="flex md:w-8/12 lg:w-6/12 w-full ">
             <div class="md:w-8/12 lg:w-6/12 px-5">
-                <img src="{{ asset('assets/img/usuario.svg') }}" alt="{{ auth()->user()->username }}">
+                <img src="{{ asset('assets/img/usuario.svg') }}" alt="{{ $user->username }}">
             </div>
             <div class="md:w-8/12 lg:w-6/12 px-5">
-                <p class="text-gray-700 text-2xl">{{ auth()->user()->username }}</p>
+                <p class="text-gray-700 text-2xl">{{ $user->username }}</p>
             </div>
         </div>
     </section>

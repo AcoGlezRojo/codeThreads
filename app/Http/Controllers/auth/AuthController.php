@@ -15,7 +15,6 @@ class AuthController extends Controller
     public function index()
     {
         //welcome view
-        dump(auth()->user());
         return view('welcome');
     }
 
@@ -64,10 +63,17 @@ class AuthController extends Controller
             'password' => 'required'
         ]);
 
-        if (!auth()->attempt($request->only('email', 'password'))) {
+        if (!auth()->attempt($request->only('email', 'password'),  $request->remember)) {
             return back()->with('alert', 'Credenciales incorrectas');
         }
 
         return redirect()->route('posts');
+    }
+
+    public function close()
+    {
+        auth()->logout();
+
+        return redirect()->route('welcome');
     }
 }
