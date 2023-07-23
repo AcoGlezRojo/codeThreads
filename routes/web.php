@@ -23,4 +23,5 @@ Route::post('/login', [AuthController::class, 'read']);
 Route::post('/logout', [AuthController::class, 'close'])->name('logout');
 
 // Route::get('/muro', [PostController::class, 'index'])->name('posts');
-Route::get('/{user:username}', [PostController::class, 'index'])->name('posts');
+Route::get('/{user:username}', [PostController::class, 'index'])->name('posts.index');
+Route::get('/posts/create', [PostController::class, 'create'])->name('posts.create');

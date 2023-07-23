@@ -7,7 +7,7 @@ use Illuminate\Http\Request;
 
 class PostController extends Controller
 {
-    //
+    
     public function __construct()
     {
         $this->middleware('auth');
@@ -15,10 +15,13 @@ class PostController extends Controller
 
     public function index(User $user)
     {
-
-        // dd($user);
         return view('dashboard', [
             'user' => $user
         ]);
+    }
+
+    public function create()
+    {
+        return view('posts.create');
     }
 }
